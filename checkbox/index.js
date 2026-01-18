@@ -263,12 +263,22 @@ htmlDoubleButton.addEventListener('click',function() //eventlistener hozzáadás
   * @type {HTMLInputElement} checkbox 
   */
 const checkbox = document.querySelector('#tableselector') //checkbox lekérése id alapján és változóba tétele
+handleCheckbox(checkbox) //meghívjuk a függvényt, hogy amikor az oldal elsőnek megjelenik, már akkor is a checkbox alapján jelenjen meg egy táblázat
 checkbox.addEventListener('change',function(e){ //checkbox change eseményére eventlistener
     /**
      * @type {HTMLInputElement} eventlistener target erteke
      */
     const target = e.target //target értékét eltároljuk változóba
+    handleCheckbox(target) //meghívjuk a függvényt,a target a paraméter
+})
 
+/**
+ * a paraméter értéke szerint a js táblázat megjelenik és html eltűnik vagy fordítva
+ * @param {HTMLInputElement} checkBoxElement checkbox elem
+ * @returns {void} nem returnol semmit
+ */
+function handleCheckbox(checkBoxElement) //függvény definiálás
+{
     /**
      * @type {HTMLDivElement} div section 
      */
@@ -277,7 +287,7 @@ checkbox.addEventListener('change',function(e){ //checkbox change eseményére e
      * @type {HTMLDivElement} div section
      */
     const htmlsection = document.querySelector('#htmlsection') //html div sectiont-t id alapján lekérjük és beletesszük egy változóba
-    if(target.checked) //megnézzük hogy a checkbox be van a pipálva, igaz ág
+    if(checkBoxElement.checked) //megnézzük hogy a checkbox be van a pipálva, igaz ág
     {
         jsSection.classList.add('hide') //js divnek hozzáadjuk a hide osztály
         htmlsection.classList.remove('hide') //html divnek elvesszük a hide osztályt
@@ -286,4 +296,5 @@ checkbox.addEventListener('change',function(e){ //checkbox change eseményére e
         htmlsection.classList.add('hide') //html divnek hozzáadjuk a hide osztályt
         jsSection.classList.remove('hide') //js divnek elvesszük a hide osztályt
     }
-})
+
+}
