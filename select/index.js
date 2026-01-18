@@ -258,3 +258,32 @@ htmlDoubleButton.addEventListener('click',function() //eventlistener hozzáadás
     }
     addNewRow(newObj,htmlTableBody) //új sor hozzáadása
 })
+
+/**
+ * @type {HTMLSelectElement} select element
+ */
+const select = document.querySelector('#tableselector') //a select elementet lekérjük id alapján
+select.addEventListener('change',function(e){ //eventlistenert hozzáadjuk a change eventre
+    /**
+     * @type {HTMLSelectElement} target
+     */
+    const target = e.target //targetet egy változóba beletesszük
+    /**
+     * @type {HTMLDivElement} jssectionos div
+     */
+    const jsSection = document.querySelector('#jssection') //jstáblázat divjét lekérjük id alapján, és beletesszük egy változóba
+    /**
+     * @type {HTMLDivElement} htmlsection div
+     */
+    const htmlSection = document.querySelector('#htmlsection') //htmltáblázat divjét lekérjük id alapján és beletesszük egy változóba
+    if(target.value == 'js') //megnézzük hogy a target értéke egyenlő-e js-sel
+    {
+        jsSection.classList.remove('hide') //elvesszük a a hide osztályt a jssectionről
+        htmlSection.classList.add('hide') //hozzáadjuk a hide osztály a htmlsectionről
+    }
+    if(target.value == 'html') //megnézzük hogy a target értéke egyenlő-e html-el
+    {
+        htmlSection.classList.remove('hide') //elvesszük a a hide osztályt a htmlsectionről
+        jsSection.classList.add('hide') //hozzáadjuk a a hide osztályt a jssectionhöz
+    }
+})
