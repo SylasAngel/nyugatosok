@@ -259,3 +259,31 @@ htmlDoubleButton.addEventListener('click',function() //eventlistener hozzáadás
     }
     addNewRow(newObj,htmlTableBody) //új sor hozzáadása
 })
+ /**
+  * @type {HTMLInputElement} checkbox 
+  */
+const checkbox = document.querySelector('#tableselector') //checkbox lekérése id alapján és változóba tétele
+checkbox.addEventListener('change',function(e){ //checkbox change eseményére eventlistener
+    /**
+     * @type {HTMLInputElement} eventlistener target erteke
+     */
+    const target = e.target //target értékét eltároljuk változóba
+
+    /**
+     * @type {HTMLDivElement} div section 
+     */
+    const jsSection = document.querySelector('#jssection') //js div section-t id alapján lekérjük, és belerakjuk egy véltozóba
+    /**
+     * @type {HTMLDivElement} div section
+     */
+    const htmlsection = document.querySelector('#htmlsection') //html div sectiont-t id alapján lekérjük és beletesszük egy változóba
+    if(target.checked) //megnézzük hogy a checkbox be van a pipálva, igaz ág
+    {
+        jsSection.classList.add('hide') //js divnek hozzáadjuk a hide osztály
+        htmlsection.classList.remove('hide') //html divnek elvesszük a hide osztályt
+    }
+    else{ //hamis ág
+        htmlsection.classList.add('hide') //html divnek hozzáadjuk a hide osztályt
+        jsSection.classList.remove('hide') //js divnek elvesszük a hide osztályt
+    }
+})
