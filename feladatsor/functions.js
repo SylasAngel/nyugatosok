@@ -130,5 +130,50 @@ function handleCheckBox(CheckBoxValue) //függvény definiálás
         htlmSection.classList.remove('hide') //html tábláról hide class levétel
         jsSection.classList.add('hide') //js táblehöz hide class hozzáadás
     }
+}
+
+/**
+ * létrehoz egy formFieldet, ami egy div,label,input,error div
+ * @param {string} id az input id-je és a label for-ja
+ * @param {string} name input name-je
+ * @param {string} text label belső szövege
+ * @param {HTMLFormElement} form form amihez hozzáfűzzük
+ * @returns {void} nem returnol semmivel
+ */
+function createFormField(id,name,text,form) //függvény definíció
+{
+/**
+ * @type {HTMLDivElement} div section létrehozása
+ */
+const secDiv = document.createElement('div') //div létrehozása,változó tárolása
+form.appendChild(secDiv) //fűzése a formhoz
+
+/**
+ * @type {HTMLLabelElement} felirata
+ */
+const label = document.createElement('label') //felirat létrehozása
+secDiv.appendChild(label) //fűzés a divhez
+/**
+ * @type {HTMLBRElement} sortörés
+ */
+const breakLine = document.createElement('br') //sortörés elem létrehozása,tárolása
+secDiv.appendChild(breakLine) //divhez fűzés
+label.htmlFor = id //megadjuk a for tulajdonságot, milyen azonosítóra mutat
+label.innerText = text //belső szöveg megadása
+
+/**
+ * @type {HTMLInputElement} bemenet
+ */
+const input = document.createElement('input') //bemenet létrehozása, tárolása
+secDiv.appendChild(input) //fűzés a divhez
+input.id = id //bemenet azonosítójának beállítása
+input.name = name //nevet megadjuk
+
+/**
+ * @type {HTMLDivElement} div az errornak
+ */
+const error = document.createElement('div') //div létrehozása,tárolása
+secDiv.appendChild(error) //divhez fűzés
+error.classList.add('error') //error osztály hozzáadásaa divhez
 
 }
