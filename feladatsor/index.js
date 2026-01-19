@@ -180,84 +180,9 @@ function addNewRow(rowObj,AppendTo) //függvény definiálás
             CellData.rowSpan= 2 //sorszélesség átállítása 2-re
         }
 }
-/**
- * @type {HTMLButtonElement} gomb
- */
-const jsSimpleButton = document.createElement('button') // gomb létrehozása
-divSection.appendChild(jsSimpleButton) //hozzáfűzzük a html-hez
-jsSimpleButton.innerText = 'JsSimpleButton' //belső szövege
-jsSimpleButton.addEventListener('click',function(){ //eventlistener hozzáadása clickre
-    /**
-     * @type {WestDat} object tartalmazza az új sor elemeit
-     */
-    const newObj = { //object meghatázorása
-        Author:'NewSimAuthor', //szerző elem
-        Creation:'NewSimCreation', //mű elem
-        FirstConcept:'NewSimConcept1' //fogalom
-    }
-    WestArr.push(newObj) //adattömbhöz hozzáadás
-    renderTable(WestArr,tbody) //táblázatot újra rendereljük
-})
 
-/**
- * @type {HTMLButtonElement} gomb
- */
-const jsDoubleButton = document.createElement('button') // gomb létrehozása
-divSection.appendChild(jsDoubleButton) //hozzáfűzzük a html-hez
-jsDoubleButton.innerText = 'JsDoubleButton' //belső szövege
-jsDoubleButton.addEventListener('click',function(){ //eventlistener hozzáadása clickre
-    /**
-     * @type {WestDat} object tartalmazza az új sor elemeit
-     */
-    const newObj = { //object meghatározás
-        Author:'NewDoubAuthor', //szerző elem
-        Creation:'NewDoubCreation', //mű elem
-        FirstConcept:'NewDoubConcept1', //fogalom
-        SecondConcept:'NewDoubConcept2' //fogalom 2
-    } 
-    WestArr.push(newObj) //adattömbhöz hozzáadás
-    renderTable(WestArr,tbody) //táblázatot újra rendereljük
-})
 
-/**
- * @type {HTMLButtonElement} gomb
- */
-const htmlSimpleButton = document.querySelector('#htmlSimpleButton')// gomb változóba tétele id alapján, lekérjük
-/**
- * @type {HTMLTableSectionElement} táblázat törzs
- */
-const htmlTableBody = document.querySelector('#HtmlBody') //lekérjük id alapján a html-es táblázatot
-htmlSimpleButton.addEventListener('click',function() //eventlistener hozzáadása clickre
-{
-    /**
-     * @type {WestDat} object ami tartalmazza az új sor elemeit
-     */
-    const newObj = { //object meghatározás
-        Author:'HtmlAuthor', //szerző elem
-        Creation:'HtmlCreation', //mű elem
-        FirstConcept:'HtmlFirstConcept', //fogalom
-    }
-    addNewRow(newObj,htmlTableBody) //függvény meghívása, új sor hozzáadása
-})
 
-/**
- * @type {HTMLButtonElement} gomb
- */
-const htmlDoubleButton = document.querySelector('#htmlDoubleButton') // gomb változóba tétele id alapján, lekérjük
-htmlDoubleButton.addEventListener('click',function() //eventlistener hozzáadása clickre
-{
-    /**
-     * @type {WestDat} object ami tartalmazza az új sor elemeit
-     */
-    const newObj = { //object meghatározása
-        Author:'HtmlAuthor', //szerző elem
-        Creation:'HtmlCreation', //mű elem
-        FirstConcept:'HtmlFirstConcept', //fogalom
-        SecCreation: 'HtmlSecCreation', //mű elem 2
-        SecondConcept: 'HtmlSecConcept' //fogalom 2
-    }
-    addNewRow(newObj,htmlTableBody) //új sor hozzáadása
-})
 
 /**
  * @type {HTMLInputElement} jelölőnégyzet
