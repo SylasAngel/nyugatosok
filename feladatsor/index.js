@@ -258,3 +258,43 @@ htmlDoubleButton.addEventListener('click',function() //eventlistener hozzáadás
     }
     addNewRow(newObj,htmlTableBody) //új sor hozzáadása
 })
+
+/**
+ * @type {HTMLInputElement} jelölőnégyzet
+ */
+const checkBox = document.querySelector('#tableselector') //checkbox lekérése id alapján
+handleCheckBox(checkBox) //függvény meghívása, hogy alapból csak 1 táblázat jelenjen meg
+checkBox.addEventListener('change',function(e){ //change esemény kezelése a checkbox elemre
+    /**
+     * @type {HTMLInputElement} eventlistener target értéke
+     */
+    const target = e.target //target értéke egy változóban
+    handleCheckBox(target) //checkboxkezelő függvény meghívása
+
+})
+
+/**
+ * kezeli a táblázatokat az alapján hogy a checkbox be van-e pipálva
+ * @param {HTMLInputElement} CheckBoxValue checkbox elem
+ * @returns {void} nem returnol semmivel
+ */
+function handleCheckBox(CheckBoxValue) //függvény definiálás
+{
+    /**
+     * @type {HTMLDivElement} html table divje
+     */
+    const htlmSection = document.querySelector('#htmlsection') //html táblázat divjének lekérése id alapján,tárolása változóba
+    /**
+     * @type {HTMLDivElement} js table divje
+     */
+    const jsSection = document.querySelector('#jssection') //js táblázat divjének lekérése id alapján, tárolása változóba
+    if(CheckBoxValue.checked){ //megnézzük, hogy a checkbox, be van-e pipálva
+        jsSection.classList.remove('hide') //js tábleről hide class eltüntetés
+        htlmSection.classList.add('hide') //html táblához hide class hozzáadás
+    }
+    else{ //hamis ág
+        htlmSection.classList.remove('hide') //html tábláról hide class levétel
+        jsSection.classList.add('hide') //js táblehöz hide class hozzáadás
+    }
+
+}
