@@ -51,10 +51,16 @@ const WestArr = [ //tömb definiálása
     }
 ]
 /**
+ * @type {HTMLDivElement} div section
+ */
+const divSection = document.createElement('div')//div element létrehozása
+document.body.appendChild(divSection) //hozzáfűzés a htmlhez
+divSection.id = 'jssection' //azonosító beállítása
+/**
  * @type {HTMLTableElement} table
  */
 const table = document.createElement('table') //táblázat elem létrehozása
-document.body.appendChild(table) //hozzáfűzzük a html törzséhez
+divSection.appendChild(table) //hozzáfűzzük a html törzséhez
 
 /**
  * @type {HTMLTableSectionElement} fejléc
@@ -178,7 +184,7 @@ function addNewRow(rowObj,AppendTo) //függvény definiálás
  * @type {HTMLButtonElement} gomb
  */
 const jsSimpleButton = document.createElement('button') // gomb létrehozása
-document.body.appendChild(jsSimpleButton) //hozzáfűzzük a html-hez
+divSection.appendChild(jsSimpleButton) //hozzáfűzzük a html-hez
 jsSimpleButton.innerText = 'JsSimpleButton' //belső szövege
 jsSimpleButton.addEventListener('click',function(){ //eventlistener hozzáadása clickre
     /**
@@ -197,7 +203,7 @@ jsSimpleButton.addEventListener('click',function(){ //eventlistener hozzáadása
  * @type {HTMLButtonElement} gomb
  */
 const jsDoubleButton = document.createElement('button') // gomb létrehozása
-document.body.appendChild(jsDoubleButton) //hozzáfűzzük a html-hez
+divSection.appendChild(jsDoubleButton) //hozzáfűzzük a html-hez
 jsDoubleButton.innerText = 'JsDoubleButton' //belső szövege
 jsDoubleButton.addEventListener('click',function(){ //eventlistener hozzáadása clickre
     /**
