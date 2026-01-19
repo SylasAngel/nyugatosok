@@ -175,5 +175,58 @@ input.name = name //nevet megadjuk
 const error = document.createElement('div') //div létrehozása,tárolása
 secDiv.appendChild(error) //divhez fűzés
 error.classList.add('error') //error osztály hozzáadásaa divhez
+}
+
+/**
+ * létrehoz egy egész formot, a megadott diven belül, 
+ * @param {HTMLDivElement} appendTo a section amihez hozzáfűzzük a formot
+ * @returns {HTMLFormElement} returnol a formmal
+ */
+function generateForm(appendTo) //függvény definiálás, legenerál egy formot
+{
+    /**
+ * @type {{formId:string,formName:string,formText:string}[]} a form fieldek adatai object tömbben
+ */
+const jsFormData = [ //tömb definíció
+    {
+        formId :'elso', //formfield azonosító
+        formName:'Szerzo', //formfield name
+        formText :'Szerző' //formfield szöveg
+    },
+    {
+        formId :'masodik', //formfield azonosító
+        formName:'Mu1', //formfield name
+        formText :'Mű' //formfield szöveg
+    },
+    {
+        formId :'harmadik', //formfield azonosító
+        formName:'Fogalom1', //formfield name
+        formText :'Első fogalom' //formfield szöveg
+    },
+    {
+        formId:'negyedik', //formfield azonosító
+        formName:'Fogalom2', //formfield name
+        formText:'Második fogalom' //formfield szöveg
+    }
+]
+/**
+ * @type {HTMLFormElement} form létrehozása
+ */
+const jsform = document.createElement('form') //form létrehozása, változóba tétele
+appendTo.appendChild(jsform) //fűzés a jssection divjéhez
+jsform.id = 'jsform' //azonosító megadása
+
+for(const e of jsFormData) //végigiterálunk a jsFormDatán
+{
+    createFormField(e.formId,e.formName,e.formText,jsform) //függvény meghívása, az objectet adataival
+}
+/**
+ * @type {HTMLButtonElement} gomb, amivel majd az adatokat táblázathoz fűzzük
+ */
+const jsButton = document.createElement('button') //gomb elem létrehozás,tárolás
+jsform.appendChild(jsButton) //hozzáfűzzük a formhoz
+jsButton.innerText = 'Submit' //belső szövegét megadjuk
+
+return jsform //visszatérünk a formmal
 
 }
