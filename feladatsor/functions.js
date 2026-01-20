@@ -230,3 +230,32 @@ jsButton.innerText = 'Submit' //belső szövegét megadjuk
 return jsform //visszatérünk a formmal
 
 }
+
+/**
+ * függvény ami validál egy mezőt
+ * @param {HTMLInputElement} inputField bemeneti elem
+ * @param {string} text szöveg amit írunk ha error van
+ * @returns {boolean} visszatér a validdal
+ */
+function validate(inputField,text) //függvény definíció
+{
+    /**
+     * @type {boolean} hamis/igaz érték
+     */
+    let valid = true //valid értékét beállítjuk true-ra
+    if(inputField.value == '') //megnézzük hogy a mező bemenete üres-e
+    {
+        /**
+         * @type {HTMLDivElement} form mező div
+         */
+        const fieldParent = inputField.parentElement //a mező szülő elemét tároljuk egy változóba
+
+        /**
+         * @type {HTMLDivElement} error div
+         */
+        const error = fieldParent.querySelector('.error') //error divet azonosító alapján lekérjü, tároljuk
+        error.innerText = text //belső szövegét megadjuk
+        valid = false //valid értékét false-ra állítjuk
+    }
+    return valid //visszatér a validdal
+}

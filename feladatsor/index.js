@@ -131,45 +131,16 @@ jsform.addEventListener('submit',function(e) //eventlistener hozzáadása a form
             e.innerText = '' //az elemek belső szövegét üressé tesszük
         }
     }
-    if(szerzoInput.value == '') //megnézzük hogy a szerző bemenete üres-e
-    {
-        /**
-         * @type {HTMLDivElement} form field div section
-         */
-        const szerzoParent = szerzoInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
-        /**
-         * @type {HTMLDivElement} error div
-         */
-        const error = szerzoParent.querySelector('.error') //error divet megkapjuk azonosító alapján
-        error.innerText = 'Szerző mező kitöltése kötelező' //error belső szövegét megadjuk
-        valid = false //valid értékét átállítjuk false-ra
+    if(!validate(szerzoInput,'Szerző elem kitoltése kötelező')){ //megnézzük a függvénnyel, hogy a szerző bemenet üres-e
+        valid = false //a validot átállítjuk hamisra
     }
-    if(muInput.value =='') //megnézzük hogy a mű bemenete üres-e
-    {
-        /**
-         * @type {HTMLDivElement} form field div section
-         */
-        const muParent = muInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
-        /**
-         * @type {HTMLDivElement}  error div
-         */
-        const error = muParent.querySelector('.error') //error divet megkapjuk azonosító alapján
-        error.innerText = 'Mű mező kitöltése kötelező' //error belső szövegét megadjuk
-        valid = false //valid értékét átállítjuk false-ra
+    if(!validate(muInput,'Mű mező kitöltése kötelező')){ //megnézzük a függvénnyel, hogy a mű bemenet üres-e
+        valid = false //a validot átállítjuk hamisra
     }
-    if(elsoFogInput.value =='') //megnézzük hogy az első fogalom bemenete üres-e
+    if(!validate(elsoFogInput,'Első fogalom mező kitöltése kötelező')) //megnézzük a függvénnyel, hogy az első fogalom bemenet üres-e
     {
-        /**
-         * @type {HTMLDivElement} form field div section
-         */
-        const elsoFogParent = elsoFogInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
-        /**
-         * @type {HTMLDivElement} error div
-         */
-        const error = elsoFogParent.querySelector('.error') //error divet megkapjuk azonosító alapján
-        error.innerText = 'Első Fogalom mező kitöltése kötelező' //error belső szövegét megadjuk
-        valid = false //valid értékét átállítjuk false-ra
-    }
+        valid = false //validot hamisra állítjuk
+    } 
     if(valid) //megnézzük hogy a valid értéke true-e
     {
     /**
@@ -258,48 +229,19 @@ htmlForm.addEventListener('submit',function(e) //eventlistener a form submit ese
     {
         for(const e of errorList) //végigiterálás a listán
         {
-            e.innerText = '' //belső szöveg üres lesz
+            e.innerText = '' //belső szövegét átállítjuk üresre
         }
     }
-    if(szerzoInput.value == '') //megnézzük hogy a szerző bemenete üres-e
-    {
-        /**
-         * @type {HTMLDivElement} form field div section
-         */
-        const szerzoParent = szerzoInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
-        /**
-         * @type {HTMLDivElement} error div
-         */
-        const error = szerzoParent.querySelector('.error') //error divet megkapjuk azonosító alapján
-        error.innerText = 'Szerző mező kitöltése kötelező' //error belső szövegét megadjuk
-        valid = false //valid értékét átállítjuk false-ra
+    if(!validate(szerzoInput,'Szerző elem kitoltése kötelező')){ //megnézzük a függvénnyel, hogy a szerző bemenet üres-e
+        valid = false //a validot átállítjuk hamisra
     }
-    if(muInput.value =='') //megnézzük hogy a mű bemenete üres-e
-    {
-        /**
-         * @type {HTMLDivElement} form field div section
-         */
-        const muParent = muInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
-        /**
-         * @type {HTMLDivElement}  error div
-         */
-        const error = muParent.querySelector('.error') //error divet megkapjuk azonosító alapján
-        error.innerText = 'Mű mező kitöltése kötelező' //error belső szövegét megadjuk
-        valid = false //valid értékét átállítjuk false-ra
+    if(!validate(muInput,'Mű mező kitöltése kötelező')){ //megnézzük a függvénnyel, hogy a mű bemenet üres-e
+        valid = false //a validot átállítjuk hamisra
     }
-    if(elsoFogInput.value =='') //megnézzük hogy az első fogalom bemenete üres-e
+    if(!validate(elsoFogInput,'Első fogalom mező kitöltése kötelező')) //megnézzük a függvénnyel, hogy az első mű bemenet üres-e
     {
-        /**
-         * @type {HTMLDivElement} form field div section
-         */
-        const elsoFogParent = elsoFogInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
-        /**
-         * @type {HTMLDivElement} error div
-         */
-        const error = elsoFogParent.querySelector('.error') //error divet megkapjuk azonosító alapján
-        error.innerText = 'Első Fogalom mező kitöltése kötelező' //error belső szövegét megadjuk
-        valid = false //valid értékét átállítjuk false-ra
-    }
+        valid = false //validot hamisra állítjuk
+    } 
     if(valid) //megnézzük hogy a valid érték igaz-e
     {
             /**
