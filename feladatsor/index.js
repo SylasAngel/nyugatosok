@@ -71,7 +71,7 @@ table.appendChild(thead) //hozzáfűzzük a táblázathoz
  */
 const tbody = document.createElement('tbody') //létrehozzuk a táblázat törzsét
 table.appendChild(tbody) //hozzáfűzzük a táblázathoz
-tbody.id = "jsTbody" //adunk neki egy azonosítót
+tbody.id = "jstbody" //adunk neki egy azonosítót
 
 renderHeader(HeaderArr,thead) //meghívjuk a függvényt, rendereli a fejlécet
 renderTable(WestArr,tbody) //meghívjuk a függvényt, ami rendereli a táblázat törzset
@@ -116,32 +116,8 @@ jsform.addEventListener('submit',function(e) //eventlistener hozzáadása a form
      * @type {HTMLInputElement} negyedik bemenet elem
      */    
     const masodikFogInput = target.querySelector('#negyedik') //negyedik inputot azonosító alapján lekérjük,beletesszük egy változóba
-
-    /**
-     * @type {boolean} igaz vagy hamis érték
-     */
-    let valid = true //valid érték definiálása true értékkel
-    /**
-     * @type {NodeList} error divek listája
-     */
-        const errorList = target.querySelectorAll('.error') //error diveket egy listába kiszervezzül
-    {
-        for(const e of errorList) //végigiterálnuk a listán
-        {
-            e.innerText = '' //az elemek belső szövegét üressé tesszük
-        }
-    }
-    if(!validate(szerzoInput,'Szerző elem kitoltése kötelező')){ //megnézzük a függvénnyel, hogy a szerző bemenet üres-e
-        valid = false //a validot átállítjuk hamisra
-    }
-    if(!validate(muInput,'Mű mező kitöltése kötelező')){ //megnézzük a függvénnyel, hogy a mű bemenet üres-e
-        valid = false //a validot átállítjuk hamisra
-    }
-    if(!validate(elsoFogInput,'Első fogalom mező kitöltése kötelező')) //megnézzük a függvénnyel, hogy az első fogalom bemenet üres-e
-    {
-        valid = false //validot hamisra állítjuk
-    } 
-    if(valid) //megnézzük hogy a valid értéke true-e
+    
+    if(validateFields(szerzoInput,muInput,elsoFogInput,target)) //megnézzük hogy a valid értéke true-e
     {
     /**
      * @type {string} a szerző bemenetében lévő érték
@@ -173,7 +149,7 @@ jsform.addEventListener('submit',function(e) //eventlistener hozzáadása a form
     /**
      * @type {HTMLTableSectionElement} táblázat törzse
      */
-    const tbody = document.querySelector('#jsTbody') //lekérjuk id alapján a js táblázat törzsét
+    const tbody = document.querySelector('#jstbody') //lekérjuk id alapján a js táblázat törzsét
     WestArr.push(newObj) //az adattömbhöz hozzáadjuk ezt az objectet is
     renderTable(WestArr,tbody) //rendereljük újra a táblázatot
     target.reset() //reseteljük a formot, minden input újra üres lesz
@@ -217,32 +193,7 @@ htmlForm.addEventListener('submit',function(e) //eventlistener a form submit ese
      */    
     const masodikFogInput = target.querySelector('#otodik')  //ötödik inputot azonosító alapján lekérjük,beletesszük egy változóba
 
- 
-    /**
-     * @type {boolean} igaz vagy hamis érték
-     */
-    let valid = true //valid érték definiálása true értékkel
-    /**
-     * @type {NodeList} lista amikbe divek vannak
-     */
-    const errorList = target.querySelectorAll('.error') //a targeten belüli összes error osztállyak rendelkező div listába szervezése
-    {
-        for(const e of errorList) //végigiterálás a listán
-        {
-            e.innerText = '' //belső szövegét átállítjuk üresre
-        }
-    }
-    if(!validate(szerzoInput,'Szerző elem kitoltése kötelező')){ //megnézzük a függvénnyel, hogy a szerző bemenet üres-e
-        valid = false //a validot átállítjuk hamisra
-    }
-    if(!validate(muInput,'Mű mező kitöltése kötelező')){ //megnézzük a függvénnyel, hogy a mű bemenet üres-e
-        valid = false //a validot átállítjuk hamisra
-    }
-    if(!validate(elsoFogInput,'Első fogalom mező kitöltése kötelező')) //megnézzük a függvénnyel, hogy az első mű bemenet üres-e
-    {
-        valid = false //validot hamisra állítjuk
-    } 
-    if(valid) //megnézzük hogy a valid érték igaz-e
+    if(validateFields(szerzoInput,muInput,elsoFogInput,target)) //megnézzük hogy a valid érték igaz-e
     {
             /**
      * @type {string} a szerző bemenetében lévő érték
@@ -280,14 +231,11 @@ htmlForm.addEventListener('submit',function(e) //eventlistener a form submit ese
     /**
      * @type {HTMLTableSectionElement} html táblázat törzs
      */
-    const tbody = document.querySelector('#HtmlBody') //htmles táblázat törszének lekérése azonosító alapján
+    const tbody = document.querySelector('#htmltbody') //htmles táblázat törszének lekérése azonosító alapján
     addNewRow(newObj,tbody) //függvény meghívásával hozzáadjuk az új sor(oka)t a html táblázatához
 
     htmlForm.reset() //reseteljük a formot, input elemek üresek lesznek
-
     }
-
-
 })
 
 

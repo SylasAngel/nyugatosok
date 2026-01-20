@@ -259,3 +259,38 @@ function validate(inputField,text) //függvény definíció
     }
     return valid //visszatér a validdal
 }
+/**
+ * az összes kellő fieldet validálja
+ * @param {HTMLInputElement} firstInputField első bemeneti elem
+ * @param {HTMLInputElement} secondInputField második bemeneti elem
+ * @param {HTMLInputElement} thirdInputField harmadik bemeneti elem
+ * @param {HTMLFormElement} form //a form amibők kikeressük az error diveket
+ * @returns {boolean} visszatér az értékkel ami jelzi hogy továbbmehetünk, e a táblázathoz fűzéshez
+ */
+function validateFields(firstInputField,secondInputField,thirdInputField,form) //függvény definiálás
+{
+    /**
+     * @type {NodeList} error divek listája
+     */
+    const errorList = form.querySelectorAll('.error') //error diveket egy listába kiszervezzül
+        for(const e of errorList) //végigiterálnuk a listán
+        {
+            e.innerText = '' //az elemek belső szövegét üressé tesszük
+        }
+    /**
+    * @type {boolean} boolean elem
+    */
+    let valid = true //validot definiáljuk
+    if(!validate(firstInputField,'Szerző elem kitoltése kötelező')){ //megnézzük a függvénnyel, hogy az első bemenet üres-e
+        valid = false //a validot átállítjuk hamisra
+    }
+    if(!validate(secondInputField,'Mű mező kitöltése kötelező')){ //megnézzük a függvénnyel, hogy a második bemenet üres-e
+        valid = false //a validot átállítjuk hamisra
+    }
+    if(!validate(thirdInputField,'Első fogalom mező kitöltése kötelező')) //megnézzük a függvénnyel, hogy a harmadik bemenet bemenet üres-e
+    {
+        valid = false //validot hamisra állítjuk
+    } 
+    return valid //visszatér a validdal
+
+}
