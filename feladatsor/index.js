@@ -154,5 +154,81 @@ jsform.addEventListener('submit',function(e) //eventlistener hozzáadása a form
 })
 
 
+/**
+ * @type {HTMLFormElement} html formja
+ */
+const htmlForm = document.querySelector('#htmlform') //id alapján lekérjük a html formját
+htmlForm.addEventListener('submit',function(e) //eventlistener a form submit eseményére
+{
+        e.preventDefault() //az oldal alapértelmezett működést
+
+    /**
+     * @type {HTMLFormElement}a form a target
+     */
+    const target = e.target // az esemény targetjét egy változóba belerakjuk
+
+    /**
+     * @type {HTMLInputElement} első bemenet elem
+     */
+    const szerzoInput = target.querySelector('#elso') //első inputot azonosító alapján lekérjük,beletesszük egy változóba
+    /**
+     * @type {HTMLInputElement} második bemenet elem
+     */
+    const muInput = target.querySelector('#masodik') //második inputot azonosító alapján lekérjük,beletesszük egy változóba
+    /**
+     * @type {HTMLInputElement} harmadik bemenet elem
+     */
+    const elsoFogInput = target.querySelector('#harmadik') //harmadik inputot azonosító alapján lekérjük,beletesszük egy változóba
+    /**
+     * @type {HTMLInputElement} negyedik bemenet elem
+     */
+    const masodikMuInput = target.querySelector('#negyedik')//negyedik inputot azonosító alapján lekérjük,beletesszük egy változóba
+    /**
+     * @type {HTMLInputElement} ötödik bemenet elem
+     */    
+    const masodikFogInput = target.querySelector('#otodik')  //ötödik inputot azonosító alapján lekérjük,beletesszük egy változóba
+
+    /**
+     * @type {string} a szerző bemenetében lévő érték
+     */
+    const szerzoValue = szerzoInput.value //első input értékének tárolása
+    /**
+     * @type {string} a mű bemenetében lévő érték
+     */
+    const muValue = muInput.value //második input értékéne tárolása
+    /**
+     * @type {string} az első fogalom bemenetében lévő érték
+     */
+    const elsoFogValue = elsoFogInput.value //harmadik input értékének tárolása
+    /**
+     * @type {string} második mű bemenetében lévő érték
+     */
+    const masodikMuValue = masodikMuInput.value //negyedik input értékéne tárolása
+    /**
+     * @type {string} a második fogalom bemenetében lévő érték
+     */
+    const masodikFogValue = masodikFogInput.value //ötödik input értékének tárolása
+
+    /**
+    * @type {WestDat} adat object
+    */
+    const newObj = {} //üres object létrehozása
+    newObj.Author = szerzoValue //objekt szerző értékét hozzáadjuk az objecthez
+    newObj.Creation = muValue  //objekt mű értékét hozzáadjuk az objecthez
+    newObj.FirstConcept = elsoFogValue //objekt első fogalom értékét hozzáadjuk
+    if(masodikFogValue && masodikMuValue) //vizsgáljuk hogy a második mű és a második fogalom érték üres-e
+    {
+        newObj.SecCreation = masodikMuValue //hozzáadjuk az objecthez a második műt is
+        newObj.SecondConcept = masodikFogValue //hozzáadjuk az objecthez a második fogalmat is
+    }
+    /**
+     * @type {HTMLTableSectionElement} html táblázat törzs
+     */
+    const tbody = document.querySelector('#HtmlBody') //htmles táblázat törszének lekérése azonosító alapján
+    addNewRow(newObj,tbody) //függvény meghívásával hozzáadjuk az új sor(oka)t a html táblázatához
+
+    htmlForm.reset() //reseteljük a formot, input elemek üresek lesznek
+
+})
 
 
