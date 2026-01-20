@@ -121,6 +121,16 @@ jsform.addEventListener('submit',function(e) //eventlistener hozzáadása a form
      * @type {boolean} igaz vagy hamis érték
      */
     let valid = true //valid érték definiálása true értékkel
+    /**
+     * @type {NodeList} error divek listája
+     */
+        const errorList = target.querySelectorAll('.error') //error diveket egy listába kiszervezzül
+    {
+        for(const e of errorList) //végigiterálnuk a listán
+        {
+            e.innerText = '' //az elemek belső szövegét üressé tesszük
+        }
+    }
     if(szerzoInput.value == '') //megnézzük hogy a szerző bemenete üres-e
     {
         /**
@@ -241,6 +251,16 @@ htmlForm.addEventListener('submit',function(e) //eventlistener a form submit ese
      * @type {boolean} igaz vagy hamis érték
      */
     let valid = true //valid érték definiálása true értékkel
+    /**
+     * @type {NodeList} lista amikbe divek vannak
+     */
+    const errorList = target.querySelectorAll('.error') //a targeten belüli összes error osztállyak rendelkező div listába szervezése
+    {
+        for(const e of errorList) //végigiterálás a listán
+        {
+            e.innerText = '' //belső szöveg üres lesz
+        }
+    }
     if(szerzoInput.value == '') //megnézzük hogy a szerző bemenete üres-e
     {
         /**
