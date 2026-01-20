@@ -118,6 +118,51 @@ jsform.addEventListener('submit',function(e) //eventlistener hozzáadása a form
     const masodikFogInput = target.querySelector('#negyedik') //negyedik inputot azonosító alapján lekérjük,beletesszük egy változóba
 
     /**
+     * @type {boolean} igaz vagy hamis érték
+     */
+    let valid = true //valid érték definiálása true értékkel
+    if(szerzoInput.value == '') //megnézzük hogy a szerző bemenete üres-e
+    {
+        /**
+         * @type {HTMLDivElement} form field div section
+         */
+        const szerzoParent = szerzoInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
+        /**
+         * @type {HTMLDivElement} error div
+         */
+        const error = szerzoParent.querySelector('.error') //error divet megkapjuk azonosító alapján
+        error.innerText = 'Szerző mező kitöltése kötelező' //error belső szövegét megadjuk
+        valid = false //valid értékét átállítjuk false-ra
+    }
+    if(muInput.value =='') //megnézzük hogy a mű bemenete üres-e
+    {
+        /**
+         * @type {HTMLDivElement} form field div section
+         */
+        const muParent = muInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
+        /**
+         * @type {HTMLDivElement}  error div
+         */
+        const error = muParent.querySelector('.error') //error divet megkapjuk azonosító alapján
+        error.innerText = 'Mű mező kitöltése kötelező' //error belső szövegét megadjuk
+        valid = false //valid értékét átállítjuk false-ra
+    }
+    if(elsoFogInput.value =='') //megnézzük hogy az első fogalom bemenete üres-e
+    {
+        /**
+         * @type {HTMLDivElement} form field div section
+         */
+        const elsoFogParent = elsoFogInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
+        /**
+         * @type {HTMLDivElement} error div
+         */
+        const error = elsoFogParent.querySelector('.error') //error divet megkapjuk azonosító alapján
+        error.innerText = 'Első Fogalom mező kitöltése kötelező' //error belső szövegét megadjuk
+        valid = false //valid értékét átállítjuk false-ra
+    }
+    if(valid) //megnézzük hogy a valid értéke true-e
+    {
+    /**
      * @type {string} a szerző bemenetében lévő érték
      */
     const szerzoValue = szerzoInput.value //első input értékének tárolása
@@ -151,6 +196,9 @@ jsform.addEventListener('submit',function(e) //eventlistener hozzáadása a form
     WestArr.push(newObj) //az adattömbhöz hozzáadjuk ezt az objectet is
     renderTable(WestArr,tbody) //rendereljük újra a táblázatot
     target.reset() //reseteljük a formot, minden input újra üres lesz
+
+    }
+
 })
 
 
@@ -188,6 +236,7 @@ htmlForm.addEventListener('submit',function(e) //eventlistener a form submit ese
      */    
     const masodikFogInput = target.querySelector('#otodik')  //ötödik inputot azonosító alapján lekérjük,beletesszük egy változóba
 
+ 
     /**
      * @type {string} a szerző bemenetében lévő érték
      */
