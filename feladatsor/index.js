@@ -238,6 +238,51 @@ htmlForm.addEventListener('submit',function(e) //eventlistener a form submit ese
 
  
     /**
+     * @type {boolean} igaz vagy hamis érték
+     */
+    let valid = true //valid érték definiálása true értékkel
+    if(szerzoInput.value == '') //megnézzük hogy a szerző bemenete üres-e
+    {
+        /**
+         * @type {HTMLDivElement} form field div section
+         */
+        const szerzoParent = szerzoInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
+        /**
+         * @type {HTMLDivElement} error div
+         */
+        const error = szerzoParent.querySelector('.error') //error divet megkapjuk azonosító alapján
+        error.innerText = 'Szerző mező kitöltése kötelező' //error belső szövegét megadjuk
+        valid = false //valid értékét átállítjuk false-ra
+    }
+    if(muInput.value =='') //megnézzük hogy a mű bemenete üres-e
+    {
+        /**
+         * @type {HTMLDivElement} form field div section
+         */
+        const muParent = muInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
+        /**
+         * @type {HTMLDivElement}  error div
+         */
+        const error = muParent.querySelector('.error') //error divet megkapjuk azonosító alapján
+        error.innerText = 'Mű mező kitöltése kötelező' //error belső szövegét megadjuk
+        valid = false //valid értékét átállítjuk false-ra
+    }
+    if(elsoFogInput.value =='') //megnézzük hogy az első fogalom bemenete üres-e
+    {
+        /**
+         * @type {HTMLDivElement} form field div section
+         */
+        const elsoFogParent = elsoFogInput.parentElement //a bemenet parent elementjét eltároljuk egy változóba
+        /**
+         * @type {HTMLDivElement} error div
+         */
+        const error = elsoFogParent.querySelector('.error') //error divet megkapjuk azonosító alapján
+        error.innerText = 'Első Fogalom mező kitöltése kötelező' //error belső szövegét megadjuk
+        valid = false //valid értékét átállítjuk false-ra
+    }
+    if(valid) //megnézzük hogy a valid érték igaz-e
+    {
+            /**
      * @type {string} a szerző bemenetében lévő érték
      */
     const szerzoValue = szerzoInput.value //első input értékének tárolása
@@ -277,6 +322,9 @@ htmlForm.addEventListener('submit',function(e) //eventlistener a form submit ese
     addNewRow(newObj,tbody) //függvény meghívásával hozzáadjuk az új sor(oka)t a html táblázatához
 
     htmlForm.reset() //reseteljük a formot, input elemek üresek lesznek
+
+    }
+
 
 })
 
