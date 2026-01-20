@@ -91,7 +91,67 @@ checkBox.addEventListener('change',function(e){ //change esemény kezelése a ch
 
 generateForm(divSection) //legeneráljuk a formot a függvény segítségével
 
+jsform.addEventListener('submit',function(e) //eventlistener hozzáadása a formhoz submit eseményre
+{
+    e.preventDefault() //az oldal alapértelmezett működést
 
+    /**
+     * @type {HTMLFormElement}a form a target
+     */
+    const target = e.target // az esemény targetjét egy változóba belerakjuk
+
+    /**
+     * @type {HTMLInputElement} első bemenet elem
+     */
+    const szerzoInput = target.querySelector('#elso') //első inputot azonosító alapján lekérjük,beletesszük egy változóba
+    /**
+     * @type {HTMLInputElement} második bemenet elem
+     */
+    const muInput = target.querySelector('#masodik') //második inputot azonosító alapján lekérjük,beletesszük egy változóba
+    /**
+     * @type {HTMLInputElement} harmadik bemenet elem
+     */
+    const elsoFogInput = target.querySelector('#harmadik') //harmadik inputot azonosító alapján lekérjük,beletesszük egy változóba
+    /**
+     * @type {HTMLInputElement} negyedik bemenet elem
+     */    
+    const masodikFogInput = target.querySelector('#negyedik') //negyedik inputot azonosító alapján lekérjük,beletesszük egy változóba
+
+    /**
+     * @type {string} a szerző bemenetében lévő érték
+     */
+    const szerzoValue = szerzoInput.value //első input értékének tárolása
+    /**
+     * @type {string} a mű bemenetében lévő érték
+     */
+    const muValue = muInput.value //második input értékéne tárolása
+    /**
+     * @type {string} az első fogalom bemenetében lévő érték
+     */
+    const elsoFogValue = elsoFogInput.value //harmadik input értékének tárolása
+    /**
+     * @type {string} a második fogalom bemenetében lévő érték
+     */
+    const masodikFogValue = masodikFogInput.value //harmadik input értékének tárolása
+    /**
+    * @type {WestDat} adat object
+    */
+    const newObj = {} //üres object létrehozása
+    newObj.Author = szerzoValue //objekt szerző értékét hozzáadjuk az objecthez
+    newObj.Creation = muValue  //objekt mű értékét hozzáadjuk az objecthez
+    newObj.FirstConcept = elsoFogValue //objekt első fogalom értékét hozzáadjuk
+    if(masodikFogValue) //vizsgáljuk hogy a második fogalom érték üres-e
+    {
+        newObj.SecondConcept = masodikFogValue //hozzáadjuk az objecthez a második fogalmat is
+    }
+    /**
+     * @type {HTMLTableSectionElement} táblázat törzse
+     */
+    const tbody = document.querySelector('#jsTbody') //lekérjuk id alapján a js táblázat törzsét
+    WestArr.push(newObj) //az adattömbhöz hozzáadjuk ezt az objectet is
+    renderTable(WestArr,tbody) //rendereljük újra a táblázatot
+    target.reset() //reseteljük a formot, minden input újra üres lesz
+})
 
 
 
